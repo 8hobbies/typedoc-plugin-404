@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-import { Application, Renderer, RendererEvent, UrlMapping } from "typedoc";
+import type { Application, Renderer, RendererEvent, UrlMapping } from "typedoc";
 
 /**
  * Add a 404 page.
@@ -27,17 +27,23 @@ function add404Page(event: RendererEvent): void {
 
   // Add a URL mapping that's similar to the index page. Use the same model, and create the 404
   // page.
-  const indexUrlMapping = event.urls.find((element) => element.url === 'index.html');
+  const indexUrlMapping = event.urls.find(
+    (element) => element.url === "index.html",
+  );
   if (indexUrlMapping === undefined) {
     throw Error("Unable to find the URL mapping for the index page.");
   }
-  const page404UrlMapping = new UrlMapping("404.html", indexUrlMapping.model, (_) => {
-    return '404 Page Not Found';
-  });
+  const page404UrlMapping = new UrlMapping(
+    "404.html",
+    indexUrlMapping.model,
+    (_) => {
+      return "404 Page Not Found";
+    },
+  );
 
   event.urls.push(page404UrlMapping);
 }
 
-export function load(application: Application) {
+export function load(application: Application): void {
   application.renderer.on(Renderer.EVENT_BEGIN, add404Page);
 }

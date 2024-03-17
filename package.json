@@ -1,0 +1,52 @@
+{
+  "name": "@8hobbies/typedoc-plugin-404",
+  "version": "1.0.0",
+  "description": "Create a 404 page for typedoc-generated doc.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/dist",
+    "!/dist/**.test.d.ts",
+    "!/dist/**.test.js"
+  ],
+  "scripts": {
+    "clean": "tsc --build --clean",
+    "compile": "tsc",
+    "doc": "typedoc",
+    "format": "eslint --fix --ext .ts . && prettier . --write",
+    "lint": "eslint --report-unused-disable-directives --max-warnings=0 --ext .ts . && prettier . --check",
+    "prepack": "npm run clean && npm run compile",
+    "test": "npm run compile",
+    "test-all": "npm run compile && npm run lint && npm run test && npm run doc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/8hobbies/typedoc-plugin-404"
+  },
+  "keywords": [
+    "finance"
+  ],
+  "author": "Hong Xu",
+  "license": " Apache-2.0",
+  "bugs": {
+    "url": "https://gitlab.com/8hobbies/irr/issues"
+  },
+  "homepage": "https://typedoc-plugin-404.8hobbies.com",
+  "devDependencies": {
+    "@babel/preset-env": "^7.24.0",
+    "@babel/preset-typescript": "^7.23.3",
+    "@jest/globals": "^29.7.0",
+    "@types/node": "^20.11.28",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-promise": "^6.1.1",
+    "prettier": "^3.2.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.2"
+  },
+  "dependencies": {
+    "typedoc": "^0.25.12"
+  }
+}

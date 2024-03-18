@@ -54,6 +54,7 @@ function add404Page(event: RendererEvent, page404Content: string): void {
   event.urls.push(page404UrlMapping);
 }
 
+/** @ignore */
 export function load(application: Application): void {
   application.options.addDeclaration({
     name: optionName,

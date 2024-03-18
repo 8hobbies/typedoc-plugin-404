@@ -1,0 +1,62 @@
+# Copyright 2024 Hong Xu <hong@8hobbies.com>
+#
+# Licensed under the Apache License, Version 2.0(the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+include:
+  - template: "Workflows/MergeRequest-Pipelines.gitlab-ci.yml"
+
+lint:
+  image: "node:18"
+  script:
+    - npm install
+    - npm run lint
+  interruptible: true
+
+.docs:
+  image: "node:18"
+  script:
+    - npm install
+    - npm run doc
+    - mv docs/ public
+  artifacts:
+    paths:
+      - public
+  interruptible: true
+
+docs:
+  extends: ".docs"
+  except:
+    - master
+
+pages:
+  extends: ".docs"
+  stage: deploy
+  only:
+    - master
+
+.runtime:
+  image: "node:${NODE_VERSION}"
+  script:
+    - npm install
+    - npm test
+  interruptible: true
+
+runtime-18:
+  extends: ".runtime"
+  variables:
+    NODE_VERSION: "18"
+
+runtime-20:
+  extends: ".runtime"
+  variables:
+    NODE_VERSION: "20"

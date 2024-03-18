@@ -17,6 +17,7 @@
 
 import {
   Application,
+  JSX,
   ParameterType,
   Renderer,
   RendererEvent,
@@ -46,7 +47,7 @@ function add404Page(event: RendererEvent, page404Content: string): void {
     "404.html",
     indexUrlMapping.model,
     (_) => {
-      return page404Content;
+      return JSX.createElement("div", { class: "404-content" }, page404Content);
     },
   );
 

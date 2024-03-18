@@ -42,10 +42,12 @@ describe("All", () => {
       });
       const page404Path = path.join(testDir, "docs", "404.html");
       expect(fs.existsSync(page404Path)).toBeTruthy();
-      expect(fs.readFileSync(page404Path, "utf-8")).toContain(
+      const htmlString =
         "page404Content" in typedocConfig
           ? typedocConfig.page404Content
-          : "404 Page Not Found",
+          : "404 Page Not Found";
+      expect(fs.readFileSync(page404Path, "utf-8")).toContain(
+        `<div class="404-content">${htmlString}</div>`,
       );
     });
   }

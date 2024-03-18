@@ -8,7 +8,7 @@ module.exports = {
     "plugin:import/recommended",
     "plugin:import/typescript",
   ],
-  ignorePatterns: ["dist", ".eslintrc.cjs", "test-dir-tmp"],
+  ignorePatterns: ["dist", ".eslintrc.cjs", "test-dir", "test-dir-tmp"],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     project: ["tsconfig.json"],

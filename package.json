@@ -8,7 +8,9 @@
   "files": [
     "/dist",
     "!/dist/**.test.d.ts",
-    "!/dist/**.test.js"
+    "!/dist/**.test.js",
+    "!/dist/vitest.config.d.ts",
+    "!/dist/vitest.config.js"
   ],
   "scripts": {
     "clean": "tsc --build --clean",

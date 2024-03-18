@@ -37,7 +37,12 @@ describe("All", () => {
 
     // Fill the test dir with needed content.
     fs.mkdirSync(testDir);
-    for (const f of ["README.md", "index.ts", "package.json"]) {
+    for (const f of [
+      "README.md",
+      "index.ts",
+      "package.json",
+      "tsconfig.json",
+    ]) {
       fs.cpSync(path.join(testSrcDir, f), path.join(testDir, f));
     }
   });

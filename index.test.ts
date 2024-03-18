@@ -20,7 +20,7 @@ describe("All", () => {
 
     // Fill the test dir with needed content.
     fs.mkdirSync(testDir);
-    for (const f of ["README.md", "index.ts"]) {
+    for (const f of ["README.md", "index.ts", "package.json"]) {
       fs.cpSync(path.join(testSrcDir, f), path.join(testDir, f));
     }
   });
@@ -30,6 +30,9 @@ describe("All", () => {
       path.join(testDir, "typedoc.json"),
       JSON.stringify(typedocConfig),
     );
+    spawnSync("npm", ["install"], {
+      cwd: testDir,
+    });
     spawnSync("npx", ["typedoc", "--plugin", `${__dirname}/dist/index.js`], {
       cwd: testDir,
     });

@@ -1,6 +1,6 @@
 /*.tgz
 /dist
 /docs
-/node_modules
-/test-dir/docs
 /test-dir-tmp
+/test-dir/docs
+node_modules

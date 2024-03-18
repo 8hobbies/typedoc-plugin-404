@@ -15,10 +15,10 @@ npm install --save-dev @8hobbies/typedoc-plugin-404
 
 ## Usage
 
-Pass `--plugin typedoc-plugin-404` when invoking the typedoc command:
+Pass `--plugin @8hobbies/typedoc-plugin-404` when invoking the typedoc command:
 
 ```
-typedoc --plugin typedoc-plugin-404
+typedoc --plugin @8hobbies/typedoc-plugin-404
 ```
 
 ## Configuration

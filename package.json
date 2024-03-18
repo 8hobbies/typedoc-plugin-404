@@ -25,12 +25,12 @@
     "url": "https://gitlab.com/8hobbies/typedoc-plugin-404"
   },
   "keywords": [
-    "finance"
+    "typedoc-plugin"
   ],
   "author": "Hong Xu",
   "license": " Apache-2.0",
   "bugs": {
-    "url": "https://gitlab.com/8hobbies/irr/issues"
+    "url": "https://gitlab.com/8hobbies/typedoc-plugin-404/issues"
   },
   "homepage": "https://typedoc-plugin-404.8hobbies.com",
   "devDependencies": {

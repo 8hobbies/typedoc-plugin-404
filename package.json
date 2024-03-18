@@ -30,7 +30,7 @@
     "typedoc-plugin"
   ],
   "author": "Hong Xu",
-  "license": " Apache-2.0",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://gitlab.com/8hobbies/typedoc-plugin-404/issues"
   },

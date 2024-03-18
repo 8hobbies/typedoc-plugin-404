@@ -15,12 +15,21 @@
  * limitations under the License.
  */
 
-import { Application, Renderer, RendererEvent, UrlMapping } from "typedoc";
+import {
+  Application,
+  ParameterType,
+  Renderer,
+  RendererEvent,
+  UrlMapping,
+} from "typedoc";
+
+const default404PageContent = "404 Page Not Found" as const;
+const optionName = "page404Content" as const;
 
 /**
  * Add a 404 page.
  */
-function add404Page(event: RendererEvent): void {
+function add404Page(event: RendererEvent, page404Content: string): void {
   if (event.urls === undefined) {
     throw Error("URLs not detected. Unable to add a 404 page.");
   }
@@ -37,7 +46,7 @@ function add404Page(event: RendererEvent): void {
     "404.html",
     indexUrlMapping.model,
     (_) => {
-      return "404 Page Not Found";
+      return page404Content;
     },
   );
 
@@ -45,5 +54,19 @@ function add404Page(event: RendererEvent): void {
 }
 
 export function load(application: Application): void {
-  application.renderer.on(Renderer.EVENT_BEGIN, add404Page);
+  application.options.addDeclaration({
+    name: optionName,
+    type: ParameterType.String,
+    help: `Content of the 404 page.`,
+    defaultValue: default404PageContent,
+  });
+  application.renderer.on(Renderer.EVENT_BEGIN, (event: RendererEvent) => {
+    const page404Content = application.options.getValue(optionName);
+    if (typeof page404Content !== "string") {
+      throw TypeError(
+        `Unexpected ${optionName} type: ${JSON.stringify(page404Content)}`,
+      );
+    }
+    add404Page(event, page404Content);
+  });
 }

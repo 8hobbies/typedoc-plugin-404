@@ -19,7 +19,8 @@ typedoc --plugin typedoc-plugin-404
 
 ## Configuration
 
-This plugin recognizes a `page404Content` option in your `typedoc.json`. You can specify custom content that shows up in the 404 page:
+This plugin recognizes a `page404Content` option in your `typedoc.json`. You can specify custom
+content that shows up in the 404 page:
 
 ```json
 {
@@ -29,15 +30,20 @@ This plugin recognizes a `page404Content` option in your `typedoc.json`. You can
 
 The default value is `"404 Page Not Found"`.
 
+## Live Example
+
+[The document of this plugin](https://typedoc-plugin-404.8hobbies.com) itself is a live example.
+Visit [its 404 page](https://typedoc-plugin-404.8hobbies.com) or type in a random path from that
+domain to check out.
+
 ## Contributing
 
 Source code is available on [GitLab][].
 
 To report a bug, visit the [issue tracker][].
 
-To run test, run `npm run test-all`. To display test coverage, run `npm run
-coverage`. To build for production, run `npm pack`. To build the documentation,
-run `npm run doc`.
+To run test, run `npm run test-all`. To display test coverage, run `npm run coverage`. To build for
+production, run `npm pack`. To build the documentation, run `npm run doc`.
 
 To send your contribution, open a [merge request][].
 

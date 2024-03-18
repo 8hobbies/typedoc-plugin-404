@@ -13,7 +13,7 @@
   "scripts": {
     "clean": "tsc --build --clean",
     "compile": "tsc",
-    "doc": "typedoc",
+    "doc": "npm run compile && typedoc --plugin ./dist/index.js",
     "format": "eslint --fix --ext .ts . && prettier . --write",
     "lint": "eslint --report-unused-disable-directives --max-warnings=0 --ext .ts . && prettier . --check",
     "prepack": "npm run clean && npm run compile",

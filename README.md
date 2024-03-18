@@ -23,7 +23,7 @@ This plugin recognizes a `page404Content` option in your `typedoc.json`. You can
 
 ```json
 {
-  page404Content: "This page does not exist."
+  "page404Content": "This page does not exist."
 }
 ```
 

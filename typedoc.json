@@ -1,4 +1,5 @@
 {
   "$schema": "https://typedoc.org/schema.json",
-  "entryPoints": ["./index.ts"]
+  "entryPoints": ["./index.ts"],
+  "sitemapBaseUrl": "https://typedoc-plugin-404.8hobbies.com"
 }

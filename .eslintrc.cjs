@@ -8,7 +8,7 @@ module.exports = {
     "plugin:import/recommended",
     "plugin:import/typescript",
   ],
-  ignorePatterns: ["dist", ".eslintrc.cjs"],
+  ignorePatterns: ["dist", ".eslintrc.cjs", "test-dir-tmp"],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     project: ["tsconfig.json"],
@@ -44,6 +44,12 @@ module.exports = {
           order: "asc", // sort in ascending order.
           caseInsensitive: true,
         },
+      },
+    ],
+    "import/no-unresolved": [
+      "error",
+      {
+        ignore: ["^typedoc$", "^vitest/config$"],
       },
     ],
   },

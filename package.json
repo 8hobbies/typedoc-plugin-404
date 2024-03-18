@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Create a 404 page for typedoc-generated doc.",
   "main": "dist/index.js",
+  "type": "module",
   "types": "dist/index.d.ts",
   "files": [
     "/dist",
@@ -16,7 +17,7 @@
     "format": "eslint --fix --ext .ts . && prettier . --write",
     "lint": "eslint --report-unused-disable-directives --max-warnings=0 --ext .ts . && prettier . --check",
     "prepack": "npm run clean && npm run compile",
-    "test": "npm run compile",
+    "test": "npm run compile && vitest",
     "test-all": "npm run compile && npm run lint && npm run test && npm run doc"
   },
   "repository": {

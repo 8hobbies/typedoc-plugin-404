@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-import type { Application, Renderer, RendererEvent, UrlMapping } from "typedoc";
+import { Application, Renderer, RendererEvent, UrlMapping } from "typedoc";
 
 /**
  * Add a 404 page.

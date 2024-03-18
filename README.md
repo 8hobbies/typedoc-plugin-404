@@ -1,5 +1,8 @@
 # typedoc-plugin-404: Create a 404 Page
 
+[![npm version](https://badge.fury.io/js/@8hobbies%2Ftypedoc-plugin-404.svg)](https://badge.fury.io/js/@8hobbies%2Ftypedoc-plugin-404)
+[![pipeline status](https://gitlab.com/8hobbies/typedoc-plugin-404/badges/master/pipeline.svg)](https://gitlab.com/8hobbies/typedoc-plugin-404/-/commits/master)
+
 This plugin generates a `404.html` at the root of the document. `404.html` is a recognized location
 that are recognized by web hosts such as [GitHub Pages][] and [GitLab Pages][].
 

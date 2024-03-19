@@ -16,8 +16,8 @@
     "clean": "tsc --build --clean",
     "compile": "tsc",
     "doc": "npm run compile && typedoc --plugin ./dist/index.js",
-    "format": "eslint --fix --ext .ts . && prettier . --write",
-    "lint": "eslint --report-unused-disable-directives --max-warnings=0 --ext .ts . && prettier . --check",
+    "format": "eslint --fix *.ts *.mjs && prettier . --write",
+    "lint": "eslint --report-unused-disable-directives --max-warnings=0 *.ts *.mjs && prettier . --check",
     "prepack": "npm run clean && npm run compile",
     "test": "npm run compile && vitest --run",
     "test-all": "npm run compile && npm run lint && npm run test && npm run doc"
@@ -36,10 +36,10 @@
   },
   "homepage": "https://typedoc-plugin-404.8hobbies.com",
   "devDependencies": {
-    "@types/node": "^20.11.28",
-    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@8hobbies/eslint-conf-baseline": "^2.0.0",
+    "@types/node": "^20.11.29",
+    "@typescript-eslint/eslint-plugin": "^7.3.1",
     "eslint": "^8.57.0",
-    "eslint-plugin-import": "^2.29.1",
     "prettier": "^3.2.5",
     "typescript": "^5.4.2",
     "vitest": "^1.4.0"

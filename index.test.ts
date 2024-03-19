@@ -15,9 +15,9 @@
  * limitations under the License.
  */
 
-import { spawnSync } from "child_process";
 import fs from "fs";
 import path from "path";
+import { spawnSync } from "child_process";
 
 describe("All", () => {
   // Dir that contains files used for test.

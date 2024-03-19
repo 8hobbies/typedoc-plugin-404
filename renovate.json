@@ -1,4 +1,4 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended", "group:allNonMajor"]
+  "extends": ["gitlab>8hobbies/renovate-config#v1"]
 }

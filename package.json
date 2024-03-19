@@ -37,7 +37,7 @@
   "homepage": "https://typedoc-plugin-404.8hobbies.com",
   "devDependencies": {
     "@8hobbies/eslint-conf-baseline": "^2.0.0",
-    "@types/node": "^20.11.29",
+    "@types/node": "^20.11.30",
     "@typescript-eslint/eslint-plugin": "^7.3.1",
     "eslint": "^8.57.0",
     "prettier": "^3.2.5",

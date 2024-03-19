@@ -14,6 +14,8 @@
 
 include:
   - template: "Workflows/MergeRequest-Pipelines.gitlab-ci.yml"
+  - project: "renovate-bot/renovate-runner"
+    file: "/templates/renovate-config-validator.gitlab-ci.yml"
 
 lint:
   image: "node:18"

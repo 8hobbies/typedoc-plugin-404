@@ -24,10 +24,24 @@ describe("All", () => {
   const testSrcDir = path.join(__dirname, "test-dir");
   // Dir in which the test performs.
   const testDir = path.join(__dirname, "test-dir-tmp");
+  // Package version number.
+  const packageJson: unknown = JSON.parse(
+    fs.readFileSync("package.json", "utf-8"),
+  );
+  if (
+    typeof packageJson !== "object" ||
+    packageJson === null ||
+    !("version" in packageJson) ||
+    typeof packageJson.version !== "string"
+  ) {
+    throw new Error("Invalid package version in package.json.");
+  }
+  const packageVersion = packageJson.version;
 
   const minTypedocConfig = {
     $schema: "https://typedoc.org/schema.json",
     entryPoints: ["./index.ts"],
+    plugin: ["@8hobbies/typedoc-plugin-404"],
   } as const;
 
   beforeEach(() => {
@@ -50,16 +64,28 @@ describe("All", () => {
   for (const typedocConfig of [
     minTypedocConfig,
     { ...minTypedocConfig, page404Content: "I cannot find this page" },
+    {
+      ...minTypedocConfig,
+      page404Content: '<p class="404-test">I cannot find this page</p>',
+    },
   ]) {
     test(`404 page generated with 404Content configured as ${"page404Content" in typedocConfig ? `"${typedocConfig.page404Content}"` : "default"}`, () => {
       fs.writeFileSync(
         path.join(testDir, "typedoc.json"),
         JSON.stringify(typedocConfig),
       );
+      spawnSync("npm", ["pack"]);
       spawnSync("npm", ["install"], {
         cwd: testDir,
       });
-      spawnSync("npx", ["typedoc", "--plugin", `${__dirname}/dist/index.js`], {
+      spawnSync(
+        "npm",
+        ["install", `../8hobbies-typedoc-plugin-404-${packageVersion}.tgz`],
+        {
+          cwd: testDir,
+        },
+      );
+      spawnSync("npx", ["typedoc"], {
         cwd: testDir,
       });
       const page404Path = path.join(testDir, "docs", "404.html");

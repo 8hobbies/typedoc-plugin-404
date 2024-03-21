@@ -32,7 +32,8 @@ content that shows up in the 404 page:
 }
 ```
 
-The default value is `"404 Page Not Found"`.
+The default value is `"404 Page Not Found"`. The content can be HTML. The content is always wrapped
+with `"<div class="404-content"></div>"` in the HTML output.
 
 ## Live Example
 

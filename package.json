@@ -13,7 +13,7 @@
     "!/dist/vitest.config.js"
   ],
   "scripts": {
-    "clean": "tsc --build --clean",
+    "clean": "rimraf dist/",
     "compile": "tsc",
     "doc": "npm run compile && typedoc --plugin ./dist/index.js",
     "format": "eslint --fix *.ts *.mjs && prettier . --write",
@@ -42,6 +42,7 @@
     "eslint": "^8.57.0",
     "globals": "^14.0.0",
     "prettier": "^3.2.5",
+    "rimraf": "^5.0.5",
     "typescript": "^5.4.3",
     "vitest": "^1.4.0"
   },

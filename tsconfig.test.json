@@ -4,5 +4,5 @@
     "noEmit": true,
     "allowImportingTsExtensions": true
   },
-  "files": ["index.test.ts", "jest.config.ts"]
+  "files": ["index.test.ts"]
 }

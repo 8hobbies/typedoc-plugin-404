@@ -4,5 +4,5 @@
     "noEmit": true,
     "allowImportingTsExtensions": true
   },
-  "files": ["index.test.ts"]
+  "files": ["index.test.ts", "vitest.config.ts"]
 }

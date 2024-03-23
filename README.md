@@ -61,7 +61,7 @@ asset paths. This can be achieved by:
    ```json
    {
      "scripts": {
-       "doc": "typedoc && replace-in-files --string 'href=\"assets/' --replacement 'href=\"/assets/' docs/404.html"
+       "doc": "typedoc && replace-in-files --string '=\"assets/' --replacement '=\"/assets/' docs/404.html"
      }
    }
    ```

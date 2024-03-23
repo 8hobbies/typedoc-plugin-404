@@ -15,7 +15,7 @@
   "scripts": {
     "clean": "rimraf dist/",
     "compile": "tsc --project tsconfig.json && tsc --project tsconfig.test.json",
-    "doc": "npm run compile && typedoc --plugin ./dist/index.js && replace-in-files --string 'href=\"assets/' --replacement 'href=\"/assets/' docs/404.html",
+    "doc": "npm run compile && typedoc --plugin ./dist/index.js && replace-in-files --string '=\"assets/' --replacement '=\"/assets/' docs/404.html",
     "format": "eslint --fix *.ts *.mjs && prettier . --write",
     "lint": "eslint --report-unused-disable-directives --max-warnings=0 *.ts *.mjs && prettier . --check",
     "prepack": "npm run clean && npm run compile",

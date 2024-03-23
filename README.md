@@ -21,6 +21,15 @@ Pass `--plugin @8hobbies/typedoc-plugin-404` when invoking the typedoc command:
 typedoc --plugin @8hobbies/typedoc-plugin-404
 ```
 
+Or add the plugin to your typedoc.json file:
+
+```
+// typedoc.json
+{
+  "plugin": ["@8hobbies/typedoc-plugin-404"]
+}
+```
+
 ## Configuration
 
 This plugin recognizes a `page404Content` option in your `typedoc.json`. You can specify custom
@@ -34,6 +43,28 @@ content that shows up in the 404 page:
 
 The default value is `"404 Page Not Found"`. The content can be HTML. The content is always wrapped
 with `"<div class="404-content"></div>"` in the HTML output.
+
+### Use with the Default Theme
+
+If you use this plugin with the default theme, you will need to replace asset paths in 404.html with
+absolute paths, otherwise user visiting non-existent pages in subfolders will not retrieve the right
+asset paths. This can be achieved by:
+
+1. Installing `replace-in-files-cli`:
+
+   ```shell
+   npm install --save-dev replace-in-files-cli
+   ```
+
+2. Run the replacement after `typedoc`. In your `package.json` file:
+
+   ```json
+   {
+     "scripts": {
+       "doc": "typedoc && replace-in-files --string 'href=\"assets/' --replacement 'href=\"/assets/' docs/404.html"
+     }
+   }
+   ```
 
 ## Live Example
 

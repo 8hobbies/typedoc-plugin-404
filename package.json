@@ -15,7 +15,7 @@
   "scripts": {
     "clean": "rimraf dist/",
     "compile": "tsc --project tsconfig.json && tsc --project tsconfig.test.json",
-    "doc": "npm run compile && typedoc --plugin ./dist/index.js",
+    "doc": "npm run compile && typedoc --plugin ./dist/index.js && replace-in-files --string 'href=\"assets/' --replacement 'href=\"/assets/' docs/404.html",
     "format": "eslint --fix *.ts *.mjs && prettier . --write",
     "lint": "eslint --report-unused-disable-directives --max-warnings=0 *.ts *.mjs && prettier . --check",
     "prepack": "npm run clean && npm run compile",
@@ -40,6 +40,7 @@
     "@types/node": "^20.11.30",
     "globals": "^14.0.0",
     "prettier": "^3.2.5",
+    "replace-in-files-cli": "^2.2.0",
     "rimraf": "^5.0.5",
     "typescript": "^5.4.3",
     "vitest": "^1.4.0"

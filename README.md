@@ -69,8 +69,8 @@ asset paths. This can be achieved by:
 ## Live Example
 
 [The document of this plugin](https://typedoc-plugin-404.8hobbies.com) itself is a live example.
-Visit [its 404 page](https://typedoc-plugin-404.8hobbies.com) or type in a random path from that
-domain to check out.
+Visit [its 404 page](https://typedoc-plugin-404.8hobbies.com/404.html) or type in a random path from
+that domain to check out.
 
 ## Contributing
 

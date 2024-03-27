@@ -1,5 +1,7 @@
 {
   "$schema": "https://typedoc.org/schema.json",
   "entryPoints": ["./index.ts"],
-  "sitemapBaseUrl": "https://typedoc-plugin-404.8hobbies.com"
+  "sitemapBaseUrl": "https://typedoc-plugin-404.8hobbies.com",
+  "plugin": ["@8hobbies/typedoc-plugin-plausible", "./dist/index.js"],
+  "plausibleSiteDomain": "typedoc-plugin-plausible.8hobbies.com"
 }

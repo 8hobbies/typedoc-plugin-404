@@ -47,18 +47,28 @@ pages:
     - master
 
 .runtime:
-  image: "node:${NODE_VERSION}"
+  image: "${IMAGE}"
   script:
+    - node --version
     - npm install
     - npm test
   interruptible: true
+  coverage: '/All files[^|]*\|[^|]*\s+([\d\.]+)/'
 
-runtime-18:
+runtime-linux:
   extends: ".runtime"
-  variables:
-    NODE_VERSION: "18"
+  parallel:
+    matrix:
+      - IMAGE:
+          - "node:18"
+          - "node:20"
 
-runtime-20:
+runtime-windows:
   extends: ".runtime"
-  variables:
-    NODE_VERSION: "20"
+  tags:
+    - saas-windows-medium-amd64
+
+runtime-macos:
+  extends: ".runtime"
+  tags:
+    - saas-macos-medium-m1

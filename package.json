@@ -16,8 +16,8 @@
     "clean": "rimraf dist/",
     "compile": "tsc --project tsconfig.json && tsc --project tsconfig.test.json",
     "doc": "npm run compile && typedoc && replace-in-files --string '=\"assets/' --replacement '=\"/assets/' docs/404.html",
-    "format": "eslint --fix *.ts *.mjs && prettier . --write",
-    "lint": "eslint --report-unused-disable-directives --max-warnings=0 *.ts *.mjs && prettier . --check",
+    "format": "eslint --fix *.ts *.mjs && prettier . .gitlab-ci.yml --write",
+    "lint": "eslint --report-unused-disable-directives --max-warnings=0 *.ts *.mjs && prettier . .gitlab-ci.yml --check",
     "prepack": "npm run clean && npm run compile",
     "test": "npm run compile && vitest --run",
     "test-all": "npm run compile && npm run lint && npm run test && npm run doc"

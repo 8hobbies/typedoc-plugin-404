@@ -47,6 +47,17 @@ describe("All", () => {
     plugin: ["@8hobbies/typedoc-plugin-404"],
   } as const;
 
+  // Same as spawnSync, except it throws an error if the spawn fails.
+  function spawnSyncWithError(
+    ...args: Parameters<typeof spawnSync>
+  ): ReturnType<typeof spawnSync> {
+    const result = spawnSync(...args);
+    if ("error" in result) {
+      throw new Error(JSON.stringify(result));
+    }
+    return result;
+  }
+
   beforeEach(() => {
     if (fs.existsSync(testDir)) {
       fs.rmSync(testDir, { recursive: true, force: true });
@@ -77,18 +88,18 @@ describe("All", () => {
         path.join(testDir, "typedoc.json"),
         JSON.stringify(typedocConfig),
       );
-      spawnSync(npmExec, ["pack"]);
-      spawnSync(npmExec, ["install"], {
+      spawnSyncWithError(npmExec, ["pack"]);
+      spawnSyncWithError(npmExec, ["install"], {
         cwd: testDir,
       });
-      spawnSync(
+      spawnSyncWithError(
         npmExec,
         ["install", `../8hobbies-typedoc-plugin-404-${packageVersion}.tgz`],
         {
           cwd: testDir,
         },
       );
-      spawnSync(npxExec, ["typedoc"], {
+      spawnSyncWithError(npxExec, ["typedoc"], {
         cwd: testDir,
       });
       const page404Path = path.join(testDir, "docs", "404.html");

@@ -46,7 +46,7 @@
     "typescript": "^5.4.3",
     "vitest": "^1.4.0"
   },
-  "dependencies": {
+  "peerDependencies": {
     "typedoc": "^0.25.12"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@8hobbies/typedoc-plugin-404",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Create a 404 page for TypeDoc-generated doc.",
   "main": "dist/index.js",
   "type": "module",
@@ -12,6 +12,9 @@
     "!/dist/vitest.config.d.ts",
     "!/dist/vitest.config.js"
   ],
+  "engines": {
+    "node": ">=16"
+  },
   "scripts": {
     "clean": "rimraf dist/",
     "compile": "tsc --project tsconfig.json && tsc --project tsconfig.test.json",
@@ -38,12 +41,12 @@
   "devDependencies": {
     "@8hobbies/eslint-conf-baseline": "^2.1.0",
     "@8hobbies/typedoc-plugin-plausible": "^1.0.0",
-    "@types/node": "^20.11.30",
+    "@types/node": "^20.12.5",
     "globals": "^15.0.0",
     "prettier": "^3.2.5",
     "replace-in-files-cli": "^2.2.0",
     "rimraf": "^5.0.5",
-    "typescript": "^5.4.3",
+    "typescript": "^5.4.4",
     "vitest": "^1.4.0"
   },
   "peerDependencies": {

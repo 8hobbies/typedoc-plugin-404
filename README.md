@@ -44,6 +44,8 @@ content that shows up in the 404 page:
 The default value is `"404 Page Not Found"`. The content can be HTML. The content is always wrapped
 with `"<div class="404-content"></div>"` in the HTML output.
 
+Alternatively, check out [this blog post][] for a detailed tutorial.
+
 ### Use with the Default Theme
 
 If you use this plugin with the default theme, you will need to replace asset paths in 404.html with
@@ -104,6 +106,7 @@ limitations under the License.
 [GitHub Pages]: https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-custom-404-page-for-your-github-pages-site
 [GitLab Pages]: https://docs.gitlab.com/ee/user/project/pages/introduction.html#custom-error-codes-pages
 [GitLab]: https://gitlab.com/8hobbies/typedoc-plugin-404
+[TypeDoc]: https://typedoc.org/
 [issue tracker]: https://gitlab.com/8hobbies/typedoc-plugin-404/issues
 [merge request]: https://gitlab.com/8hobbies/typedoc-plugin-404/-/merge_requests
-[TypeDoc]: https://typedoc.org/
+[this blog post]: https://tech.8hobbies.com/posts/make-typedoc-generate-404-page/

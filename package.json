@@ -13,7 +13,7 @@
     "!/dist/vitest.config.js"
   ],
   "engines": {
-    "node": ">=16"
+    "node": ">=16.20.2"
   },
   "scripts": {
     "clean": "rimraf dist/",
@@ -40,7 +40,7 @@
   "homepage": "https://typedoc-plugin-404.8hobbies.com",
   "devDependencies": {
     "@8hobbies/eslint-conf-baseline": "^2.1.0",
-    "@8hobbies/typedoc-plugin-plausible": "^1.0.0",
+    "@8hobbies/typedoc-plugin-plausible": "^1.0.1",
     "@types/node": "^20.12.5",
     "globals": "^15.0.0",
     "prettier": "^3.2.5",
@@ -50,6 +50,6 @@
     "vitest": "^1.4.0"
   },
   "peerDependencies": {
-    "typedoc": "^0.25.12"
+    "typedoc": "^0.25.13"
   }
 }

@@ -13,7 +13,7 @@
     "!/dist/vitest.config.js"
   ],
   "engines": {
-    "node": ">=18"
+    "node": "^18 || ^20 || >= 21"
   },
   "scripts": {
     "clean": "rimraf dist/",

@@ -23,7 +23,7 @@ Pass `--plugin @8hobbies/typedoc-plugin-404` when invoking the typedoc command:
 typedoc --plugin @8hobbies/typedoc-plugin-404
 ```
 
-Or add the plugin to your typedoc.json file:
+Or add the plugin to your `typedoc.json` file:
 
 ```
 // typedoc.json

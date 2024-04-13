@@ -72,8 +72,8 @@ asset paths. This can be achieved by:
 
 ## Live Example
 
-[The document of this plugin](https://typedoc-plugin-404.8hobbies.com) itself is a live example.
-Visit [its 404 page](https://typedoc-plugin-404.8hobbies.com/404.html) or type in a random path from
+[The document of this plugin](https://typedoc-404.8hob.io) itself is a live example.
+Visit [its 404 page](https://typedoc-404.8hob.io/404.html) or type in a random path from
 that domain to check out.
 
 ## Contributing
@@ -111,4 +111,4 @@ limitations under the License.
 [TypeDoc]: https://typedoc.org/
 [issue tracker]: https://gitlab.com/8hobbies/typedoc-plugin-404/issues
 [merge request]: https://gitlab.com/8hobbies/typedoc-plugin-404/-/merge_requests
-[this blog post]: https://tech.8hobbies.com/posts/make-typedoc-generate-404-page/
+[this blog post]: https://8hob.io/posts/make-typedoc-generate-404-page/

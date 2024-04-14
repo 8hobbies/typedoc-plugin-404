@@ -75,4 +75,7 @@ export function load(application: Application): void {
     }
     add404Page(event, page404Content);
   });
+  console.log(
+    "typedoc-plugin-404: If you use the default theme of TypeDoc, make sure you have followed https://typedoc-404.8hob.io/#md:use-with-the-default-theme",
+  );
 }

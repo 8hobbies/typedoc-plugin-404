@@ -26,6 +26,8 @@ import {
 
 const default404PageContent = "404 Page Not Found" as const;
 const optionName = "page404Content" as const;
+const defaultThemeMessageSuppressionOptionName =
+  "page404SuppressDefaultThemeWarning" as const;
 
 /**
  * Add a 404 page.
@@ -66,6 +68,12 @@ export function load(application: Application): void {
     help: `Content of the 404 page.`,
     defaultValue: default404PageContent,
   });
+  application.options.addDeclaration({
+    name: defaultThemeMessageSuppressionOptionName,
+    type: ParameterType.Boolean,
+    help: `Suppress the typedoc-plugin-404 warning on default theme.`,
+    defaultValue: false,
+  });
   application.renderer.on(Renderer.EVENT_BEGIN, (event: RendererEvent) => {
     const page404Content = application.options.getValue(optionName);
     if (typeof page404Content !== "string") {
@@ -74,8 +82,15 @@ export function load(application: Application): void {
       );
     }
     add404Page(event, page404Content);
+
+    // Print the warning message here, as the option value isn't yet available before rendering.
+    if (
+      !application.options.getValue(defaultThemeMessageSuppressionOptionName)
+    ) {
+      console.log(
+        "typedoc-plugin-404: If you use the default theme of TypeDoc, make sure you have followed https://typedoc-404.8hob.io/#md:use-with-the-default-theme\n" +
+          `  Add '"${defaultThemeMessageSuppressionOptionName}": true' to typedoc.json to suppress this warning`,
+      );
+    }
   });
-  console.log(
-    "typedoc-plugin-404: If you use the default theme of TypeDoc, make sure you have followed https://typedoc-404.8hob.io/#md:use-with-the-default-theme",
-  );
 }

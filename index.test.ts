@@ -58,6 +58,21 @@ describe("All", () => {
     return result;
   }
 
+  // Install the plugin in the test dir.
+  function installPlugin(): void {
+    spawnSyncWithError(npmExec, ["pack"]);
+    spawnSyncWithError(npmExec, ["install"], {
+      cwd: testDir,
+    });
+    spawnSyncWithError(
+      npmExec,
+      ["install", `../8hobbies-typedoc-plugin-404-${packageVersion}.tgz`],
+      {
+        cwd: testDir,
+      },
+    );
+  }
+
   beforeEach(() => {
     if (fs.existsSync(testDir)) {
       fs.rmSync(testDir, { recursive: true, force: true });
@@ -88,17 +103,7 @@ describe("All", () => {
         path.join(testDir, "typedoc.json"),
         JSON.stringify(typedocConfig),
       );
-      spawnSyncWithError(npmExec, ["pack"]);
-      spawnSyncWithError(npmExec, ["install"], {
-        cwd: testDir,
-      });
-      spawnSyncWithError(
-        npmExec,
-        ["install", `../8hobbies-typedoc-plugin-404-${packageVersion}.tgz`],
-        {
-          cwd: testDir,
-        },
-      );
+      installPlugin();
       spawnSyncWithError(npxExec, ["typedoc"], {
         cwd: testDir,
       });
@@ -113,4 +118,37 @@ describe("All", () => {
       );
     });
   }
+
+  // Part of the warning message.
+  const defaultThemeWarningMsg =
+    "https://typedoc-404.8hob.io/#md:use-with-the-default-theme" as const;
+
+  test("Warning on default theme is present when no option is specified", () => {
+    fs.writeFileSync(
+      path.join(testDir, "typedoc.json"),
+      JSON.stringify(minTypedocConfig),
+    );
+    installPlugin();
+    const result = spawnSyncWithError(npxExec, ["typedoc"], {
+      cwd: testDir,
+      encoding: "utf-8",
+    });
+    expect(result.output[1]).toContain(defaultThemeWarningMsg);
+  });
+
+  test("No warning on default theme is present if user suppresses it", () => {
+    fs.writeFileSync(
+      path.join(testDir, "typedoc.json"),
+      JSON.stringify({
+        ...minTypedocConfig,
+        page404SuppressDefaultThemeWarning: true,
+      }),
+    );
+    installPlugin();
+    const result = spawnSyncWithError(npxExec, ["typedoc"], {
+      cwd: testDir,
+      encoding: "utf-8",
+    });
+    expect(result.output[1]).not.toContain(defaultThemeWarningMsg);
+  });
 });

@@ -3,5 +3,6 @@
   "entryPoints": ["./index.ts"],
   "sitemapBaseUrl": "https://typedoc-404.8hob.io",
   "plugin": ["@8hobbies/typedoc-plugin-plausible", "./dist/index.js"],
-  "plausibleSiteDomain": "oss.8hob.io"
+  "plausibleSiteDomain": "oss.8hob.io",
+  "page404SuppressDefaultThemeWarning": true
 }

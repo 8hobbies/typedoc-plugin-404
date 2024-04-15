@@ -46,6 +46,7 @@
     "prettier": "^3.2.5",
     "replace-in-files-cli": "^2.2.0",
     "rimraf": "^5.0.5",
+    "typedoc-plugin-extra-footer": "^1.0.1",
     "typescript": "^5.4.5",
     "vitest": "^1.5.0"
   },

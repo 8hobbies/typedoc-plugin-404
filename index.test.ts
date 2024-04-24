@@ -179,4 +179,23 @@ describe("All", () => {
     });
     expect(result.output[1]).not.toContain(defaultThemeWarningMsg);
   });
+
+  test("No noindex tag in other generated HTML files", () => {
+    fs.writeFileSync(
+      path.join(testDir, "typedoc.json"),
+      JSON.stringify({
+        ...minTypedocConfig,
+        page404SuppressDefaultThemeWarning: true,
+      }),
+    );
+    installPlugin();
+    spawnSyncWithError(npxExec, ["typedoc"], {
+      cwd: testDir,
+      encoding: "utf-8",
+    });
+
+    const indexPath = path.join(testDir, "docs", "index.html");
+    expect(fs.existsSync(indexPath)).toBeTruthy();
+    expect(fs.readFileSync(indexPath, "utf-8")).not.toContain("noindex");
+  });
 });

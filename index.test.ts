@@ -16,6 +16,7 @@
  */
 
 import { JSDOM } from "jsdom";
+import { escapeRegExp } from "lodash-es";
 import fs from "fs";
 import path from "path";
 import { spawnSync } from "child_process";
@@ -136,8 +137,12 @@ describe("All", () => {
         "page404Content" in typedocConfig
           ? typedocConfig.page404Content
           : "404 Page Not Found";
-      expect(fs.readFileSync(page404Path, "utf-8")).toContain(
-        `<div class="404-content">${htmlString}</div>`,
+      expect(fs.readFileSync(page404Path, "utf-8")).toMatch(
+        // We don't use JSDOM to test here because we need to ensure htmlString is literally
+        // inserted into the doc.
+        new RegExp(
+          `<body>.*${escapeRegExp(`<div class="404-content">${htmlString}</div>`)}.*</body>`,
+        ),
       );
     });
   }

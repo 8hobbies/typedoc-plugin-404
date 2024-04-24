@@ -41,8 +41,10 @@
   "devDependencies": {
     "@8hobbies/eslint-conf-baseline": "^2.1.0",
     "@8hobbies/typedoc-plugin-plausible": "^1.0.2",
+    "@types/jsdom": "^21.1.6",
     "@types/node": "^20.12.7",
     "globals": "^15.0.0",
+    "jsdom": "^24.0.0",
     "prettier": "^3.2.5",
     "replace-in-files-cli": "^2.2.0",
     "rimraf": "^5.0.5",

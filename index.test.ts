@@ -15,6 +15,7 @@
  * limitations under the License.
  */
 
+import { JSDOM } from "jsdom";
 import fs from "fs";
 import path from "path";
 import { spawnSync } from "child_process";
@@ -95,10 +96,26 @@ describe("All", () => {
     { ...minTypedocConfig, page404Content: "I cannot find this page" },
     {
       ...minTypedocConfig,
-      page404Content: '<p class="404-test">I cannot find this page</p>',
+      page404Content: '<p class="404-test"> I cannot find this page</p>',
     },
   ]) {
-    test(`404 page is generated with noindex meta and 404Content configured as ${"page404Content" in typedocConfig ? `"${typedocConfig.page404Content}"` : "default"}`, () => {
+    test(`404 page is generated with noindex meta and 404Content configured as ${"page404Content" in typedocConfig ? `"${typedocConfig.page404Content}"` : "default"}`, async () => {
+      // Whether the given document contains a noindex tag.
+      function containsNoindexTag(document: Document): boolean {
+        const head = document.getElementsByTagName("head")[0];
+        const metaElements = head.getElementsByTagName("meta");
+        for (const metaElement of metaElements) {
+          if (
+            metaElement.getAttributeNames().length === 2 &&
+            metaElement.getAttribute("name") === "robots" &&
+            metaElement.getAttribute("content") === "noindex"
+          ) {
+            return true;
+          }
+        }
+        return false;
+      }
+
       fs.writeFileSync(
         path.join(testDir, "typedoc.json"),
         JSON.stringify(typedocConfig),
@@ -109,13 +126,16 @@ describe("All", () => {
       });
       const page404Path = path.join(testDir, "docs", "404.html");
       expect(fs.existsSync(page404Path)).toBeTruthy();
+
+      const dom = await JSDOM.fromFile(page404Path, {
+        contentType: "text/html",
+      });
+      expect(containsNoindexTag(dom.window.document)).toBeTruthy();
+
       const htmlString =
         "page404Content" in typedocConfig
           ? typedocConfig.page404Content
           : "404 Page Not Found";
-      expect(fs.readFileSync(page404Path, "utf-8")).toContain(
-        '<meta name="robots" content="noindex"/>',
-      );
       expect(fs.readFileSync(page404Path, "utf-8")).toContain(
         `<div class="404-content">${htmlString}</div>`,
       );

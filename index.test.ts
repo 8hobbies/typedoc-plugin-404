@@ -98,7 +98,7 @@ describe("All", () => {
       page404Content: '<p class="404-test">I cannot find this page</p>',
     },
   ]) {
-    test(`404 page generated with 404Content configured as ${"page404Content" in typedocConfig ? `"${typedocConfig.page404Content}"` : "default"}`, () => {
+    test(`404 page is generated with noindex meta and 404Content configured as ${"page404Content" in typedocConfig ? `"${typedocConfig.page404Content}"` : "default"}`, () => {
       fs.writeFileSync(
         path.join(testDir, "typedoc.json"),
         JSON.stringify(typedocConfig),
@@ -113,6 +113,9 @@ describe("All", () => {
         "page404Content" in typedocConfig
           ? typedocConfig.page404Content
           : "404 Page Not Found";
+      expect(fs.readFileSync(page404Path, "utf-8")).toContain(
+        '<meta name="robots" content="noindex"/>',
+      );
       expect(fs.readFileSync(page404Path, "utf-8")).toContain(
         `<div class="404-content">${htmlString}</div>`,
       );

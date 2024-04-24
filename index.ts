@@ -74,6 +74,8 @@ export function load(application: Application): void {
     help: `Suppress the typedoc-plugin-404 warning on default theme.`,
     defaultValue: false,
   });
+
+  // Add the 404 page.
   application.renderer.on(Renderer.EVENT_BEGIN, (event: RendererEvent) => {
     const page404Content = application.options.getValue(optionName);
     if (typeof page404Content !== "string") {
@@ -92,5 +94,15 @@ export function load(application: Application): void {
           `  Add '"${defaultThemeMessageSuppressionOptionName}": true' to typedoc.json to suppress this warning`,
       );
     }
+  });
+
+  // Add the noindex meta tag to the 404 page, since a soft 404 page should not be indexed.
+  application.renderer.hooks.on("head.end", (ctx) => {
+    if (ctx.page.url !== "404.html") {
+      return JSX.createElement(JSX.Fragment, {});
+    }
+    return JSX.createElement(JSX.Raw, {
+      html: '<meta name="robots" content="noindex"/>',
+    });
   });
 }

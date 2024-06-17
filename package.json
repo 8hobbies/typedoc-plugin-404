@@ -47,7 +47,7 @@
     "globals": "^15.4.0",
     "jsdom": "^24.1.0",
     "lodash-es": "^4.17.21",
-    "prettier": "^3.3.1",
+    "prettier": "^3.3.2",
     "replace-in-files-cli": "^2.2.0",
     "rimraf": "^5.0.7",
     "typedoc-plugin-extra-footer": "^1.0.1",

@@ -47,6 +47,8 @@ describe("All", () => {
     $schema: "https://typedoc.org/schema.json",
     entryPoints: ["./index.ts"],
     plugin: ["@8hobbies/typedoc-plugin-404"],
+    hostedBaseUrl: "https://example.com",
+    useHostedBaseUrlForAbsoluteLinks: true,
   } as const;
 
   // Same as spawnSync, except it throws an error if the spawn fails.
@@ -147,29 +149,12 @@ describe("All", () => {
     });
   }
 
-  // Part of the warning message.
-  const defaultThemeWarningMsg =
-    "https://typedoc-404.8hob.io/#md:use-with-the-default-theme" as const;
-
-  test("Warning on default theme is present when no option is specified", () => {
-    fs.writeFileSync(
-      path.join(testDir, "typedoc.json"),
-      JSON.stringify(minTypedocConfig),
-    );
-    installPlugin();
-    const result = spawnSyncWithError(npxExec, ["typedoc"], {
-      cwd: testDir,
-      encoding: "utf-8",
-    });
-    expect(result.output[1]).toContain(defaultThemeWarningMsg);
-  });
-
-  test("No warning on default theme is present if user suppresses it", () => {
+  test("Error out if useHostedBaseUrlForAbsoluteLinks is false", () => {
     fs.writeFileSync(
       path.join(testDir, "typedoc.json"),
       JSON.stringify({
         ...minTypedocConfig,
-        page404SuppressDefaultThemeWarning: true,
+        useHostedBaseUrlForAbsoluteLinks: false,
       }),
     );
     installPlugin();
@@ -177,7 +162,9 @@ describe("All", () => {
       cwd: testDir,
       encoding: "utf-8",
     });
-    expect(result.output[1]).not.toContain(defaultThemeWarningMsg);
+    expect(result.status).toBeTruthy();
+    expect(result.output[2]).toContain("typedoc-plugin-404 requires setting");
+    expect(result.output[2]).toContain("useHostedBaseUrlForAbsoluteLinks");
   });
 
   test("No noindex tag in other generated HTML files", () => {
@@ -185,7 +172,6 @@ describe("All", () => {
       path.join(testDir, "typedoc.json"),
       JSON.stringify({
         ...minTypedocConfig,
-        page404SuppressDefaultThemeWarning: true,
       }),
     );
     installPlugin();

@@ -1,13 +1,10 @@
 {
   "$schema": "https://typedoc.org/schema.json",
   "entryPoints": ["./index.ts"],
-  "sitemapBaseUrl": "https://typedoc-404.8hob.io",
-  "plugin": [
-    "@8hobbies/typedoc-plugin-plausible",
-    "typedoc-plugin-extra-footer",
-    "./dist/index.js"
-  ],
+  "hostedBaseUrl": "https://typedoc-404.8hob.io",
+  "useHostedBaseUrlForAbsoluteLinks": true,
+  "plugin": ["@8hobbies/typedoc-plugin-plausible", "./dist/index.js"],
   "plausibleSiteDomain": "oss.8hob.io",
-  "extraFooter": "&copy; 2024 <a href=\"https://8hob.io\">8 Hobbies, LLC</a>",
-  "page404SuppressDefaultThemeWarning": true
+  "customFooterHtml": "<p class=\"tsd-generator\">&copy; 2024 <a href=\"https://8hob.io\">8 Hobbies, LLC</a></p>",
+  "customFooterHtmlDisableWrapper": true
 }

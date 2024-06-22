@@ -39,20 +39,27 @@ content that shows up in the 404 page:
 
 ```json
 {
-  "page404Content": "This page does not exist."
+  "page404Content": "This page does not exist.",
+  "useHostedBaseUrlForAbsoluteLinks": true
 }
 ```
 
 The default value is `"404 Page Not Found"`. The content can be HTML. The content is always wrapped
 with `"<div class="404-content"></div>"` in the HTML output.
 
+`"useHostedBaseUrlForAbsoluteLinks"` is required, otherwise user visiting non-existent pages in
+subfolders will not retrieve the right asset paths.
+
 Alternatively, check out [this blog post][] for a detailed tutorial.
 
-### Use with the Default Theme
+### Use with TypeDoc 0.25.x
 
-If you use this plugin with the default theme, you will need to replace asset paths in 404.html with
-absolute paths, otherwise user visiting non-existent pages in subfolders will not retrieve the right
-asset paths. This can be achieved by:
+<!-- TODO Remove this subsection once TypeDoc 0.27.0 is released -->
+
+TypeDoc by default uses relative asset paths. TypeDoc 0.25.x doesn't have the
+`useHostedBaseUrlForAbsoluteLinks` option, therefore, you will need to replace asset paths in
+404.html with absolute paths, otherwise user visiting non-existent pages in subfolders will not
+retrieve the right asset paths. For the default theme, this can be achieved by:
 
 1. Installing `replace-in-files-cli`:
 

@@ -39,7 +39,7 @@
   },
   "homepage": "https://typedoc-404.8hob.io",
   "devDependencies": {
-    "@8hobbies/eslint-conf-baseline": "^4.0.1",
+    "@8hobbies/eslint-conf-baseline": "^5.0.0",
     "@8hobbies/typedoc-plugin-plausible": "^2.0.0",
     "@types/jsdom": "^21.1.7",
     "@types/lodash-es": "^4.17.12",

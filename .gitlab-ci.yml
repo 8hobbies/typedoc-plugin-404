@@ -19,14 +19,14 @@ include:
   - component: gitlab.com/8hobbies/compress-pages/compress-pages@1.1.3
 
 lint:
-  image: "node:22.10.0"
+  image: "node:22.11.0"
   script:
     - npm install
     - npm run lint
   interruptible: true
 
 docs:
-  image: "node:22.10.0"
+  image: "node:22.11.0"
   script:
     - npm install
     - npm run doc

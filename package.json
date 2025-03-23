@@ -1,6 +1,6 @@
 {
   "name": "@8hobbies/typedoc-plugin-404",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "description": "Create a 404 page for TypeDoc-generated doc.",
   "main": "dist/index.js",
   "type": "module",
@@ -13,7 +13,7 @@
     "!/dist/vitest.config.js"
   ],
   "engines": {
-    "node": "^18 || ^20 || ^22 || >= 23"
+    "node": "^20 || ^22 || >= 23"
   },
   "scripts": {
     "clean": "rimraf dist/",
@@ -54,6 +54,6 @@
     "vitest": "3.0.8"
   },
   "peerDependencies": {
-    "typedoc": "^0.26.11 || ^0.27.2"
+    "typedoc": "^0.26.11 || ^0.27.2 || ^0.28.0"
   }
 }
